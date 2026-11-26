@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Design Tokens & Mobile-First CSS Architecture</title>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar" aria-label="Primary Navigation">
+      <div>
+        <div class="brand">
+          <span class="brand__badge">DT</span>
+          <span>TokenUI</span>
+        </div>
+
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#overview" class="nav-link is-active">Overview</a></li>
+            <li><a href="#analytics" class="nav-link">Grid & Breakpoints</a></li>
+            <li><a href="#tokens" class="nav-link">Design Tokens</a></li>
+            <li><a href="#themes" class="nav-link">Theme System</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="glass-card" style="padding: var(--space-3);">
+        <p style="font-size: var(--text-xs); color: var(--text-secondary);">
+          Active Viewport: <strong id="viewportIndicator">Checking...</strong>
+        </p>
+      </div>
+    </aside>
+
+    <!-- Sticky Glass Header -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="btn-icon menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+          &#9776; Menu
+        </button>
+        <span style="font-weight: var(--font-semibold); font-size: var(--text-sm);">
+          Mobile-First CSS Architecture
+        </span>
+      </div>
+
+      <div class="topbar__right">
+        <button class="btn-icon" id="themeToggle" aria-label="Toggle Color Theme">
+          <span id="themeIcon">&#9790;</span>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="main-content" id="overview">
+      <section class="page-header">
+        <div>
+          <h1 class="page-title">Design System Dashboard</h1>
+          <p class="page-subtitle">
+            Fluid CSS Custom Properties, Glassmorphism &amp; Zero-Overflow Responsive Grid
+          </p>
+        </div>
+        <span class="badge badge--info">320px &bull; 768px &bull; 1024px &bull; 1440px</span>
+      </section>
+
+      <!-- KPI Cards Grid -->
+      <section class="kpi-grid" aria-label="Key Metrics">
+        <article class="glass-card">
+          <div class="kpi-card__top">
+            <span class="kpi-card__label">Design Tokens</span>
+            <span class="badge badge--success">100% Typed</span>
+          </div>
+          <div class="kpi-card__value">48 Vars</div>
+        </article>
+
+        <article class="glass-card">
+          <div class="kpi-card__top">
+            <span class="kpi-card__label">Breakpoints</span>
+            <span class="badge badge--info">Mobile-First</span>
+          </div>
+          <div class="kpi-card__value">4 Tiers</div>
+        </article>
+
+        <article class="glass-card">
+          <div class="kpi-card__top">
+            <span class="kpi-card__label">Horizontal Scroll</span>
+            <span class="badge badge--success">Verified</span>
+          </div>
+          <div class="kpi-card__value">0 px</div>
+        </article>
+
+        <article class="glass-card">
+          <div class="kpi-card__top">
+            <span class="kpi-card__label">Theme Modes</span>
+            <span class="badge badge--info">CSS Vars</span>
+          </div>
+          <div class="kpi-card__value">Light / Dark</div>
+        </article>
+      </section>
+
+      <!-- Multi-Column Responsive Grid -->
+      <section class="dashboard-grid" id="analytics">
+        <article class="glass-card card--analytics card--span-tablet">
+          <div class="card-header">
+            <h2 class="card-title">Component Adoption Velocity</h2>
+            <span class="badge badge--success">+24.8%</span>
+          </div>
+          <div class="bar-chart" role="img" aria-label="Weekly adoption bar chart">
+            <div class="bar-col"><div class="bar-fill" style="height: 45%;"></div><span class="bar-label">Mon</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 62%;"></div><span class="bar-label">Tue</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 54%;"></div><span class="bar-label">Wed</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 78%;"></div><span class="bar-label">Thu</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 88%;"></div><span class="bar-label">Fri</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 70%;"></div><span class="bar-label">Sat</span></div>
+            <div class="bar-col"><div class="bar-fill" style="height: 95%;"></div><span class="bar-label">Sun</span></div>
+          </div>
+        </article>
+
+        <article class="glass-card card--activity card--span-tablet">
+          <div class="card-header">
+            <h2 class="card-title">Architecture Highlights</h2>
+          </div>
+          <ul class="activity-list">
+            <li class="activity-item">
+              <span class="activity-dot"></span>
+              <div>
+                <strong>Fluid Typography Scales</strong>
+                <p class="page-subtitle">Uses <code>clamp()</code> tokens to scale smoothly from 320px to 1440px+.</p>
+              </div>
+            </li>
+            <li class="activity-item">
+              <span class="activity-dot"></span>
+              <div>
+                <strong>Glassmorphism Surfaces</strong>
+                <p class="page-subtitle">Translucent layers with <code>backdrop-filter: blur(14px)</code>.</p>
+              </div>
+            </li>
+            <li class="activity-item">
+              <span class="activity-dot"></span>
+              <div>
+                <strong>Zero Overflow Protection</strong>
+                <p class="page-subtitle"><code>minmax(0, 1fr)</code> tracks and safe table wrappers prevent horizontal scroll.</p>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Design Tokens Reference Table -->
+        <article class="glass-card card--tokens card--span-tablet" id="tokens">
+          <div class="card-header">
+            <h2 class="card-title">Core CSS Design Tokens Reference</h2>
+          </div>
+          <div class="table-scroll-safe">
+            <table class="token-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>CSS Custom Property</th>
+                  <th>Default Value</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Brand Color</td>
+                  <td><code class="token-code">--color-brand-500</code></td>
+                  <td>#6366f1</td>
+                  <td>Primary interactive accents &amp; active states</td>
+                </tr>
+                <tr>
+                  <td>Typography</td>
+                  <td><code class="token-code">--text-2xl</code></td>
+                  <td>clamp(1.5rem, 1.35rem + 0.75vw, 2rem)</td>
+                  <td>Fluid responsive heading scale</td>
+                </tr>
+                <tr>
+                  <td>Spacing</td>
+                  <td><code class="token-code">--space-6</code></td>
+                  <td>1.5rem (24px)</td>
+                  <td>Card &amp; grid gap rhythm</td>
+                </tr>
+                <tr>
+                  <td>Border Radius</td>
+                  <td><code class="token-code">--radius-lg</code></td>
+                  <td>1rem (16px)</td>
+                  <td>Glassmorphism dashboard panels</td>
+                </tr>
+                <tr>
+                  <td>Glass Surface</td>
+                  <td><code class="token-code">--surface-glass</code></td>
+                  <td>rgba(255, 255, 255, 0.72)</td>
+                  <td>Adaptive light/dark translucent backdrop</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

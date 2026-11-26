@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Mobile-First CSS Grid & Flexbox Dashboard Architecture
+   Breakpoints: 320px (Base), 768px (Tablet), 1024px (Desktop), 1440px (Wide)
+   ========================================================================== */
+
+/* App Shell (Mobile First: 320px+) */
+.app-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Top Header */
+.topbar {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 var(--space-4);
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.topbar__left,
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Off-Canvas Mobile Navigation Drawer */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 50;
+  width: min(82vw, var(--sidebar-width));
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--surface-solid);
+  border-right: 1px solid var(--border-subtle);
+  transform: translateX(-105%);
+  transition: transform var(--transition-smooth);
+}
+
+.sidebar.is-open {
+  transform: translateX(0);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.sidebar-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Main Content Area */
+.main-content {
+  grid-area: main;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Multi-Column Dashboard Grids (Mobile: 1 column) */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   Breakpoint 1: Tablet (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .topbar {
+    padding: 0 var(--space-6);
+  }
+
+  .main-content {
+    padding: var(--space-6);
+    gap: var(--space-6);
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .card--span-tablet {
+    grid-column: span 2;
+  }
+}
+
+/* ==========================================================================
+   Breakpoint 2: Desktop (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .app-shell {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main";
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    transform: none;
+    background: var(--surface-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+
+  .menu-toggle,
+  .sidebar-backdrop {
+    display: none;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .card--analytics {
+    grid-column: span 8;
+  }
+
+  .card--activity {
+    grid-column: span 4;
+  }
+
+  .card--tokens {
+    grid-column: span 12;
+  }
+}
+
+/* ==========================================================================
+   Breakpoint 3: Wide Desktop (1440px+)
+   ========================================================================== */
+@media (min-width: 1440px) {
+  .main-content {
+    padding: var(--space-8);
+    gap: var(--space-8);
+  }
+
+  .kpi-grid,
+  .dashboard-grid {
+    gap: var(--space-6);
+  }
+
+  .card--analytics {
+    grid-column: span 7;
+  }
+
+  .card--activity {
+    grid-column: span 5;
+  }
+}
